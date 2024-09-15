@@ -1,3 +1,54 @@
+.content input {
+	position: relative;
+	margin-left: 50px;
+	width: 70%;
+	background: #918e8e;
+	border: none;
+	outline: none;
+	padding: 7px 10px;
+	border-radius: 4px;
+	color: #ffffffd4;
+	font-weight: 500;
+	font-size: 1em;
+}
+
+.createButton {
+	padding: 4px;
+	background: rgba(4, 182, 246, 0.39);
+	color: #333;
+	font-weight: 500;
+	font-size: 1.35em;
+	letter-spacing: 0.05em;
+	cursor: pointer;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 7px;
+}
+
+.disabledCreateButton {
+	padding: 4px;
+	background: rgba(28, 55, 65, 0.351);
+	color: #333;
+	font-weight: 500;
+	font-size: 1.35em;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 7px;
+}
+
+.deleteButton {
+	padding: 1px;
+	background: rgba(204, 83, 83, 0.39);
+	color: #333;
+	font-weight: 100;
+	cursor: pointer;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 7px;
+	margin-bottom: 5px;
+}
+
 .title {
 	margin-left: 45%;
 }
@@ -10,7 +61,8 @@
 }
 .borderList li {
 	position: relative;
-	margin: 0 0 10px 2em;
+	width: 70%;
+	margin: 0 0 0px 2em;
 	padding: 4px 8px;
 	border-top: 2px solid #787a77;
 	transition: 0.3s linear;
