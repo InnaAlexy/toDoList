@@ -1,0 +1,13 @@
+.button {
+	width: 25px;
+	height: 25px;
+	margin-left: 5px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 25px;
+	color: rgb(46, 69, 54);
+	background-color: rgba(187, 242, 197, 0.532);
+	font-size: 15px;
+}

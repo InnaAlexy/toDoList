@@ -1,0 +1,10 @@
+.checkbox {
+	display: none;
+}
+
+.checkbox:checked + .label {
+	background-color: rgba(163, 192, 91, 0.362);
+	border-top: 2px solid rgb(43, 61, 33);
+}
+
+/* 51:36 */
