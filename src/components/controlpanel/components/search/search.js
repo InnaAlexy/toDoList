@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import { Button } from '../../../button/button';
+import { useRef, useState } from 'react';
 import styles from './search.module.css';
+import { debounce } from './utils';
 
 export const Search = ({ onSearch }) => {
 	const [value, setValue] = useState('');
+	const debouncedOnSearch = useRef(debounce(onSearch, 1500)).current;
 
 	const onChange = ({ target }) => {
 		setValue(target.value);
+		debouncedOnSearch(target.value);
 	};
 
 	const onSubmit = (event) => {
@@ -23,7 +25,6 @@ export const Search = ({ onSearch }) => {
 				placeholder="Поиск..."
 				onChange={onChange}
 			/>
-			<Button type="submit">🔍</Button>
 		</form>
 	);
 };
