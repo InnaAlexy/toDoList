@@ -5,12 +5,12 @@ export const Todo = ({
 	title,
 	completed,
 	isEditing,
-	onEdit,
 	onTitleChange,
 	onCompletedChange,
 	onSave,
-	onRemove,
+	onCancel,
 }) => {
+	const shortTitle = `${title.slice(0, 10)}...`;
 	return (
 		<div className={styles.todo}>
 			<input
@@ -21,21 +21,22 @@ export const Todo = ({
 			/>
 			<div className={styles.todoTitle}>
 				{isEditing ? (
-					<input
-						type="text"
-						value={title}
-						onChange={({ target }) => onTitleChange(target.value)}
-					/>
+					<div>
+						<input
+							type="text"
+							value={title}
+							onChange={({ target }) => onTitleChange(target.value)}
+						/>
+						{title !== '' ? (
+							<Button onClick={onSave}>✔️</Button>
+						) : (
+							<Button onClick={onCancel}>❌</Button>
+						)}
+					</div>
 				) : (
-					<div onClick={onEdit}> {title} </div>
-				)}
-			</div>
-
-			<div>
-				{isEditing ? (
-					<Button onClick={onSave}>➲</Button>
-				) : (
-					<Button onClick={onRemove}>❌</Button>
+					<div className={styles.title}>
+						{title.length > 10 ? shortTitle : title}{' '}
+					</div>
 				)}
 			</div>
 		</div>

@@ -1,0 +1,15 @@
+.task {
+	width: 700px;
+	margin-top: 0px;
+	padding: 5px;
+}
+
+.task input {
+	width: 650px;
+	margin: 5px 0 10px 10px;
+	font-size: 13px;
+	padding: 6px 0 4px 10px;
+	border: 1px solid #cecece;
+	background: #f6f6f6;
+	border-radius: 8px;
+}

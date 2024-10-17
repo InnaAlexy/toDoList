@@ -1,7 +1,35 @@
 .app {
-	width: 500px;
-	margin: 50px auto;
+	display: inline-block;
+	vertical-align: top;
+	margin: 30px 10px;
+	width: 30%;
+	margin: 30px auto;
 	border: 2px solid #3c4444;
 	border-radius: 10px;
 	background-color: #848787;
+}
+
+.taskPage {
+	display: inline-block;
+	width: 50%px;
+	margin-top: 80px;
+	margin-left: 80px;
+	border-radius: 10px;
+	background-color: #5c5f5fb3;
+}
+
+.restart {
+	padding: 5px;
+}
+.restart a {
+	padding: 1px;
+	color: rgba(25, 13, 15, 0.605);
+	border: 3px solid rgb(171, 36, 5);
+	border-radius: 3px;
+	background-color: #99808079;
+}
+
+:global .active {
+	text-decoration: none;
+	font-weight: 900;
 }
