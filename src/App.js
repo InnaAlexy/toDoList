@@ -4,11 +4,14 @@ import { ControlPanel, Todo } from './components';
 import { readTodo, deleteTodo, updateTodo, createTodo } from './api';
 import { addTodoInTodos, findTodo, removeTodo, setTodoInTodos } from './utils';
 import { NEW_TODO_ID } from './constants';
+import { AppContext } from './context';
 
 export const App = () => {
 	const [todos, setTodos] = useState([]);
 	const [searchPhrase, setSearchPhrase] = useState('');
 	const [isAlphabetSorting, setIsAlphabetSorting] = useState(false);
+
+	// console.log(todos);
 
 	const onTodoAdd = () => {
 		setTodos(addTodoInTodos(todos));
@@ -16,7 +19,6 @@ export const App = () => {
 
 	const onTodoSave = (todoId) => {
 		const { title, completed } = findTodo(todos, todoId) || {};
-
 		if (todoId === NEW_TODO_ID) {
 			createTodo({ title, completed }).then((todo) => {
 				let updatedTodos = setTodoInTodos(todos, {
@@ -65,20 +67,22 @@ export const App = () => {
 			/>
 			<div>
 				{todos.map(({ id, title, completed, isEditing = false }) => (
-					<Todo
-						key={id}
-						id={id}
-						title={title}
-						completed={completed}
-						isEditing={isEditing}
-						onEdit={() => onTodoEdit(id)}
-						onTitleChange={(newTitle) => onTodoTitleChange(id, newTitle)}
-						onCompletedChange={(newCompleted) =>
-							onTodoCompletedChange(id, newCompleted)
-						}
-						onSave={() => onTodoSave(id)}
-						onRemove={() => onTodoRemove(id)}
-					/>
+					<AppContext.Provider value={{ id, title, completed }}>
+						<Todo
+							key={id}
+							// id={id}
+							// title={title}
+							// completed={completed}
+							isEditing={isEditing}
+							onEdit={() => onTodoEdit(id)}
+							onTitleChange={(newTitle) => onTodoTitleChange(id, newTitle)}
+							onCompletedChange={(newCompleted) =>
+								onTodoCompletedChange(id, newCompleted)
+							}
+							onSave={() => onTodoSave(id)}
+							onRemove={() => onTodoRemove(id)}
+						/>
+					</AppContext.Provider>
 				))}
 			</div>
 		</div>

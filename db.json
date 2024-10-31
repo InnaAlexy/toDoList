@@ -12,7 +12,7 @@
     },
     {
       "title": "новое дело",
-      "completed": false,
+      "completed": true,
       "id": 11
     },
     {
