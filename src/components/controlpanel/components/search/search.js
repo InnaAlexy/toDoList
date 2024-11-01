@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Button } from '../../../button/button';
 import styles from './search.module.css';
+import { SearchContext } from '../../../../context/searchContext.js';
 
-export const Search = ({ onSearch }) => {
+export const Search = () => {
 	const [value, setValue] = useState('');
+
+	const { setSearchPhrase } = useContext(SearchContext);
 
 	const onChange = ({ target }) => {
 		setValue(target.value);
@@ -11,7 +14,7 @@ export const Search = ({ onSearch }) => {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		onSearch(value);
+		setSearchPhrase(value);
 	};
 
 	return (

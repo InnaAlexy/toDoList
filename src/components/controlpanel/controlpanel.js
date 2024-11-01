@@ -5,8 +5,12 @@ import styles from './controlpanel.module.css';
 export const ControlPanel = ({ onTodoAdd, onSearch, onSorting }) => {
 	return (
 		<div className={styles.controlPanel}>
-			<Search onSearch={onSearch} />
-			<Sorting onSorting={onSorting} />
+			<Search
+			//  onSearch={onSearch}
+			/>
+			<Sorting
+			//  onSorting={onSorting}
+			/>
 			<Button onClick={onTodoAdd}>✍</Button>
 		</div>
 	);

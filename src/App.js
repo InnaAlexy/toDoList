@@ -4,14 +4,12 @@ import { ControlPanel, Todo } from './components';
 import { readTodo, deleteTodo, updateTodo, createTodo } from './api';
 import { addTodoInTodos, findTodo, removeTodo, setTodoInTodos } from './utils';
 import { NEW_TODO_ID } from './constants';
-import { AppContext } from './context';
+import { AppContextProvider } from './context/AppContextProvider';
 
 export const App = () => {
 	const [todos, setTodos] = useState([]);
 	const [searchPhrase, setSearchPhrase] = useState('');
 	const [isAlphabetSorting, setIsAlphabetSorting] = useState(false);
-
-	// console.log(todos);
 
 	const onTodoAdd = () => {
 		setTodos(addTodoInTodos(todos));
@@ -60,29 +58,32 @@ export const App = () => {
 
 	return (
 		<div className={styles.app}>
-			<ControlPanel
-				onTodoAdd={onTodoAdd}
-				onSearch={setSearchPhrase}
-				onSorting={setIsAlphabetSorting}
-			/>
+			<AppContextProvider
+				serchValue={setSearchPhrase}
+				sortingValue={setIsAlphabetSorting}
+			>
+				<ControlPanel
+					onTodoAdd={onTodoAdd}
+					// onSearch={setSearchPhrase}
+					// onSorting={setIsAlphabetSorting}
+				/>
+			</AppContextProvider>
 			<div>
 				{todos.map(({ id, title, completed, isEditing = false }) => (
-					<AppContext.Provider value={{ id, title, completed }}>
-						<Todo
-							key={id}
-							// id={id}
-							// title={title}
-							// completed={completed}
-							isEditing={isEditing}
-							onEdit={() => onTodoEdit(id)}
-							onTitleChange={(newTitle) => onTodoTitleChange(id, newTitle)}
-							onCompletedChange={(newCompleted) =>
-								onTodoCompletedChange(id, newCompleted)
-							}
-							onSave={() => onTodoSave(id)}
-							onRemove={() => onTodoRemove(id)}
-						/>
-					</AppContext.Provider>
+					<Todo
+						key={id}
+						id={id}
+						title={title}
+						completed={completed}
+						isEditing={isEditing}
+						onEdit={() => onTodoEdit(id)}
+						onTitleChange={(newTitle) => onTodoTitleChange(id, newTitle)}
+						onCompletedChange={(newCompleted) =>
+							onTodoCompletedChange(id, newCompleted)
+						}
+						onSave={() => onTodoSave(id)}
+						onRemove={() => onTodoRemove(id)}
+					/>
 				))}
 			</div>
 		</div>

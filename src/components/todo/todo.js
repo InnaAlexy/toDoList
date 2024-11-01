@@ -1,11 +1,9 @@
-import { useContext } from 'react';
 import styles from './todo.module.css';
 import { Button } from '../button/button';
-import { AppContext } from '../../context';
 
 export const Todo = ({
-	// title,
-	// completed,
+	title,
+	completed,
 	isEditing,
 	onEdit,
 	onTitleChange,
@@ -13,7 +11,6 @@ export const Todo = ({
 	onSave,
 	onRemove,
 }) => {
-	const { title, completed } = useContext(AppContext);
 	return (
 		<div className={styles.todo}>
 			<input
