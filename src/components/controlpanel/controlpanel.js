@@ -2,15 +2,11 @@ import { Button } from '../button/button';
 import { Search, Sorting } from './components';
 import styles from './controlpanel.module.css';
 
-export const ControlPanel = ({ onTodoAdd, onSearch, onSorting }) => {
+export const ControlPanel = ({ onTodoAdd }) => {
 	return (
 		<div className={styles.controlPanel}>
-			<Search
-			//  onSearch={onSearch}
-			/>
-			<Sorting
-			//  onSorting={onSorting}
-			/>
+			<Search />
+			<Sorting />
 			<Button onClick={onTodoAdd}>✍</Button>
 		</div>
 	);

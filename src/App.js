@@ -4,7 +4,8 @@ import { ControlPanel, Todo } from './components';
 import { readTodo, deleteTodo, updateTodo, createTodo } from './api';
 import { addTodoInTodos, findTodo, removeTodo, setTodoInTodos } from './utils';
 import { NEW_TODO_ID } from './constants';
-import { AppContextProvider } from './context/AppContextProvider';
+import { SearchContext } from './context/searchContext';
+import { SortContext } from './context/sortContext';
 
 export const App = () => {
 	const [todos, setTodos] = useState([]);
@@ -58,16 +59,11 @@ export const App = () => {
 
 	return (
 		<div className={styles.app}>
-			<AppContextProvider
-				serchValue={setSearchPhrase}
-				sortingValue={setIsAlphabetSorting}
-			>
-				<ControlPanel
-					onTodoAdd={onTodoAdd}
-					// onSearch={setSearchPhrase}
-					// onSorting={setIsAlphabetSorting}
-				/>
-			</AppContextProvider>
+			<SearchContext.Provider value={[searchPhrase, setSearchPhrase]}>
+				<SortContext.Provider value={[isAlphabetSorting, setIsAlphabetSorting]}>
+					<ControlPanel onTodoAdd={onTodoAdd} />
+				</SortContext.Provider>
+			</SearchContext.Provider>
 			<div>
 				{todos.map(({ id, title, completed, isEditing = false }) => (
 					<Todo

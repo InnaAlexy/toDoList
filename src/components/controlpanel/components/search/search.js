@@ -1,12 +1,11 @@
 import { useContext, useState } from 'react';
 import { Button } from '../../../button/button';
 import styles from './search.module.css';
-import { SearchContext } from '../../../../context/searchContext.js';
+import { SearchContext } from '../../../../context/searchContext';
 
-export const Search = () => {
+export const Search = ({ onSearch }) => {
 	const [value, setValue] = useState('');
-
-	const { setSearchPhrase } = useContext(SearchContext);
+	const [searchPhrase, setSearchPhrase] = useContext(SearchContext);
 
 	const onChange = ({ target }) => {
 		setValue(target.value);
