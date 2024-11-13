@@ -1,14 +1,18 @@
-import { useContext } from 'react';
 import { Button } from '../button/button';
 import { Search, Sorting } from './components';
 import styles from './controlpanel.module.css';
-import { TodosContext } from '../../context/todosContext';
 import { addTodoInTodos } from '../../utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTodos } from '../../selectors';
+import { UPDATE_TODO } from '../../actions';
 
 export const ControlPanel = () => {
-	const [todos, setTodos] = useContext(TodosContext);
+	const todos = useSelector(selectTodos);
+	const dispatch = useDispatch();
+
 	const onTodoAdd = () => {
-		setTodos(addTodoInTodos(todos));
+		const newTODOS = addTodoInTodos(todos);
+		dispatch(UPDATE_TODO(newTODOS));
 	};
 
 	return (

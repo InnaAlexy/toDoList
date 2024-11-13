@@ -1,11 +1,12 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../../../button/button';
 import styles from './search.module.css';
-import { SearchContext } from '../../../../context/searchContext';
+import { useDispatch } from 'react-redux';
+import { setSearchPhrase } from '../../../../actions';
 
-export const Search = ({ onSearch }) => {
+export const Search = () => {
 	const [value, setValue] = useState('');
-	const [searchPhrase, setSearchPhrase] = useContext(SearchContext);
+	const dispatch = useDispatch();
 
 	const onChange = ({ target }) => {
 		setValue(target.value);
@@ -13,7 +14,7 @@ export const Search = ({ onSearch }) => {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		setSearchPhrase(value);
+		dispatch(setSearchPhrase(value));
 	};
 
 	return (

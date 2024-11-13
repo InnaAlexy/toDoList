@@ -1,16 +1,19 @@
 import styles from './sorting.module.css';
 import { Button } from '../../../button/button';
-import { useContext, useState } from 'react';
-import { SortContext } from '../../../../context/sortContext';
+import { useState } from 'react';
+// import { SortContext } from '../../../../context/sortContext';
+import { useDispatch } from 'react-redux';
+import { setIsAlphabetSorting } from '../../../../actions/setIsAlphabetSorting';
 
 export const Sorting = () => {
 	const [isEnabled, setIsEnabled] = useState(false);
+	const dispatch = useDispatch();
 
-	const [isAlphabetSorting, setIsAlphabetSorting] = useContext(SortContext);
+	// const [isAlphabetSorting, setIsAlphabetSorting] = useContext(SortContext);
 
 	const onChange = ({ target }) => {
 		setIsEnabled(target.checked);
-		setIsAlphabetSorting(target.checked);
+		dispatch(setIsAlphabetSorting(target.checked));
 	};
 
 	return (
