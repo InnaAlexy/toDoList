@@ -1,8 +1,8 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { addTodoInTodos, findTodo, removeTodo, setTodoInTodos } from '../../utils';
 import { NEW_TODO_ID } from '../../constants';
 import { createTodo, deleteTodo, updateTodo } from '../../api';
 import { ToDoLayout } from './todoLayout';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectTodos } from '../../selectors';
 import { UPDATE_TODO } from '../../actions';
 
